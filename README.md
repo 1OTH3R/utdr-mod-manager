@@ -100,10 +100,6 @@ A: For the icons specifically, you can technically use any image, but I have a b
 A: I know it's really weird, but I didn't include any malware or ransomware. A lot of the backend of this was just me working with ChatGPT, so I just kinda went with whatever.
 <br/>
 <br/>
-### Q: Why does one of the example images say "Shayy"? (`hell yeah, Shayy's here`)
-A: [Shayy](https://www.youtube.com/@ShayyTV?sub_confirmation=1) is a really inspiring UT/DR creator, and I personally *love* their thumbnail for their video on RIBBIT (see: [I played the BEST Deltarune mod](https://www.youtube.com/watch?v=aHsDcya7ArY?)), so, after doing some research on if I could use it, I took the oppotunity to yoink it and give them credit. like I linked earlier, [make sure to check out Shayy and their channel, as they make incredible content!!!](https://www.youtube.com/@ShayyTV?sub_confirmation=1)
-<br/>
-<br/>
 ### Q: Why did you make this? Why should I even use this over Luigi (UTMC)'s UT/DR Mod Manager? (`tell me why`)
 A: Despite the fact that I found it to be a fun project to make, the main reason to use it over Luigi's was that *when I put the Undertale/Deltarune Mod Manager by Luigi (UTMC) through VirusTotal, it said it had a Trojan virus in it.* **This does not mean you should hate or slander Luigi (UTMC), as there is also the potential for the virus checker to have been "sipping too much free pool water", if you will.
 <br/>
