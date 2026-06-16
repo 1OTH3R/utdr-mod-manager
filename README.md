@@ -1,3 +1,5 @@
+## okay so gimme a minute I'm rebuilding this after I rebuild it on GameBanana
+
 # UTDR Mod Manager
 
 **A simple yet effective mod manager for UNDERTALE and DELTARUNE mods, as well as fangames!**  
