@@ -1,0 +1,513 @@
+:root {
+    --red: #ff0000;
+    --yellow: #ffff00;
+    --white: #ffffff;
+    --black: #000000;
+    --grey: #999999;
+    --border-width: 0.3rem;
+}
+
+@font-face {
+    font-family: 'Determination';
+    src: url('determination-sans.ttf');
+}
+
+@font-face {
+    font-family: 'Monster-Friend';
+    src: url('monster-friend.otf');
+}
+
+* {
+    overflow: clip;
+    color: var(--white);
+    font-size: calc(1.6vw + 1.6vh);
+    font-family: 'Determination';
+    letter-spacing: 0.025rem;
+}
+
+*:hover, *:focus {
+    outline: none;
+}
+
+#head {
+    display: flex;
+    flex-direction: column;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    grid-area: head;
+    justify-content: center;
+}
+
+#head > h1 {
+    font-family: 'Monster-Friend';
+    font-size: calc(2.4vw + 2.4vh);
+    
+}
+
+html > body {
+    background-color: var(--white);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas:
+        "head menu"
+        "mods content";
+    grid-template-columns: 5.5fr 4.5fr;
+    grid-template-rows: 1.5fr 8.5fr;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body * {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div, dialog {
+    background-color: var(--black);
+    border: var(--border-width) white solid;
+    padding: calc(var(--border-width));
+    gap: var(--border-width);
+    color: white;
+}
+
+#mods {
+    border-right-width: 0px;
+    grid-area: mods;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: calc(var(--border-width) / 2);
+    gap: 0;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.mod {
+    display: flex;
+    flex-direction: row;
+    border: 0;
+    background-color: black;
+    width: 100%;
+    height: 10vh;
+    min-height: 10vh;
+    max-height: 10vh;
+    overflow: clip;
+    align-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+}
+
+img {
+    image-rendering: pixelated;
+    pointer-events: none;
+    height: 90%;
+    filter: invert(100%);
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.mod > img {
+    aspect-ratio: 26/23;
+    height: 100%;
+    align-self: stretch;
+    margin-right: 0.3rem;
+}
+
+.mod:not(.focusedElem):hover *, .mod:not(.focusedElem):focus * {
+    color: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.mod:hover img, .mod:focus img {
+    filter: invert(95%) sepia(32%) saturate(5696%) hue-rotate(358deg) brightness(104%) contrast(101%) !important; /* Credits to Barrett Sonntag */
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    aspect-ratio: 1;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.button img {
+    align-self: auto;
+}
+
+.button:hover, .button:focus {
+    border-color: var(--yellow);
+}
+
+.button:hover img, .button:focus img {
+    filter: invert(95%) sepia(32%) saturate(5696%) hue-rotate(358deg) brightness(104%) contrast(101%) !important; /* Credits to Barrett Sonntag */
+}
+
+.red-button:hover img, .red-button:focus img {
+    filter: invert(25%) sepia(99%) saturate(7352%) hue-rotate(1deg) brightness(107%) contrast(121%) !important;
+}
+
+.red-button:hover, .red-button:focus {
+    border-color: var(--red) !important;
+    animation: shake 0.5s !important;
+    animation-iteration-count: infinite !important;
+}
+
+.red-buttonNoAction {
+    border-color: var(--red) !important;
+    color: var(--red) !important;
+    
+    img {
+        filter: invert(25%) sepia(99%) saturate(7352%) hue-rotate(1deg) brightness(107%) contrast(121%) !important;
+    }
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--border-width);
+}
+
+@keyframes shake {
+    0% { transform: translate(0.01vw, 0.01vw) rotate(0deg); }
+    10% { transform: translate(-0.01vw, -0.02vw) rotate(-0.3deg); }
+    20% { transform: translate(-0.03vw, 0vw) rotate(0.3deg); }
+    30% { transform: translate(0.03vw, 0.02vw) rotate(0deg); }
+    40% { transform: translate(0.01vw, -0.01vw) rotate(0.3deg); }
+    50% { transform: translate(-0.01vw, 0.02vw) rotate(-0.3deg); }
+    60% { transform: translate(-0.03vw, 0.01vw) rotate(0deg); }
+    70% { transform: translate(0.03vw, 0.01vw) rotate(-0.3deg); }
+    80% { transform: translate(-0.01vw, -0.01vw) rotate(0.3deg); }
+    90% { transform: translate(0.01vw, 0.02vw) rotate(0deg); }
+    100% { transform: translate(0.01vw, -0.02vw) rotate(-0.3deg); }
+}
+
+#loading {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    backdrop-filter: blur(1vw);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#loading > img {
+    height: 40vh;
+}
+
+#img {
+    position: absolute;
+    height: calc(10vw + 10vh);
+    filter: none;
+}
+
+#error {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    backdrop-filter: blur(1vw);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: calc(4vw + 4vh);
+}
+
+#error div {
+    position: absolute;
+    top: var(--border-width);
+    right: var(--border-width);
+    width: calc(4vw + 4vh);
+    height: calc(4vw + 4vh);
+    cursor: pointer;
+}
+
+#error h1 {
+    font-size: calc(5vw + 5vh);
+}
+
+#error p {
+    color: #909090;
+}
+
+#close-error:hover, #close-error:focus {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+#input {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    backdrop-filter: blur(1vw);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: calc(4vw + 4vh);
+    outline: none;
+}
+
+#input, #input *, input *:focus, input *:active {
+    outline: none;
+    margin: 0;
+    gap: calc(1vw + 1vh);}
+
+#input input {
+    color: black;
+    pointer-events: auto;
+}
+
+#input #close-input {
+    display: flex;
+    position: absolute;
+    top: var(--border-width);
+    right: var(--border-width);
+    width: calc(8vw + 8vh);
+    height: calc(4vw + 4vh);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#input {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1vw + 1vh);
+}
+
+#input h1 {
+    font-size: calc(5vw + 5vh);
+}
+
+#input p {
+    color: #909090;
+}
+
+#close-input:hover, #close-input:focus {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+.no-interact {
+    pointer-events: none;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--border-width) / 4);
+    overflow-y: scroll;
+}
+
+#content * {
+    border: 0;
+    padding: 0;
+    filter: none;
+}
+
+#authorHolder {
+    color: var(--yellow);
+}
+
+#descHolder {
+    color: #969696;
+    margin-top: calc(0.5vw + 0.5vh);
+    white-space: pre-wrap;
+}
+
+.startHide {
+    display: none;
+}
+
+#input :is(input, textarea, div:not(#close-input)) {
+    background-color: var(--black);
+    border: var(--border-width) var(--white) solid;
+    padding: calc(var(--border-width));
+    color: var(--white);
+}
+
+#input :is(input, textarea, div:not(#close-input)):hover, #input :is(input, textarea, div:not(#close-input)):focus {
+    background-color: var(--black);
+    border: var(--border-width) var(--yellow) solid;
+    padding: calc(var(--border-width));
+    color: var(--yellow);
+}
+
+
+
+#input div:is(#close-input):hover, #input div:is(#close-input):focus {
+    border: var(--border-width) var(--red) solid;
+    color: var(--red);
+}
+
+.mod.focusedElem, .mod.focusedElem *, .mod.focusedElem:focus, .mod.focusedElem:hover {
+    color: var(--white);
+}
+
+.mod.focusedElem img, .mod.focusedElem img:focus {
+    /* filter: invert(70%) sepia(8%) saturate(0%) hue-rotate(153deg) brightness(85%) contrast(94%) !important; */
+    filter: invert(100%) !important;
+}
+
+.mod:not(.focusedElem):hover p, 
+.mod:not(.focusedElem):focus p {
+    color: var(--yellow) !important;
+    border-color: var(--yellow);
+}
+
+#addMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    backdrop-filter: blur(1vw);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    gap: 20vw;
+    container-type: inline-size;
+}
+
+#choiceMenu {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    background-color: transparent;
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 20vw;
+    container-type: inline-size;
+    
+    & > .button {
+        display: flex;
+        flex-direction: row;
+        width: 15%;
+        aspect-ratio: 1;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        object-fit: contain;
+        transition: transform 0.1s ease;
+        border: var(--white) 1.3cqw solid;
+        object-fit: cover;
+        
+        &:hover, &:focus {
+            border-color: var(--yellow);
+            transform: translateY(-1vh);
+        }
+    }
+}
+
+#soul {
+    height: 5vh;
+    position: absolute !important;
+    filter: drop-shadow(0px 0px calc(1vw + 1vh) #000000) drop-shadow(0px 0px calc(1vw + 1vh) #000000) !important;
+}
+
+
+#rightClickMenu, #exeClickMenu {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(1vw);
+    justify-content: center;
+    border: var(--border-width) solid white;
+    box-shadow: 0px 0px calc(1.3vw + 1.3vh) rgba(0, 0, 0, 0.5);
+    
+    & > button {
+        display: flex;
+        flex-direction: row;
+        background-color: transparent;
+        border: none;
+        padding: calc(var(--border-width) / 2);
+        color: white;
+        position: relative;
+        gap: var(--border-width);
+        cursor: pointer;
+        border-radius: 0.2vw;
+        align-items: center;
+            
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.25);
+            outline: none;
+        } & img {
+            width: 1rem;
+            background-repeat: no-repeat;
+            object-fit: contain;
+            filter: none;
+        } & figcaption {
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+    }
+    /* woop woop; major shoutout to CSS nesting because i did NOT know that was a thing and it looks so nice */
+}
+
+#exeClickMenu {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+::backdrop {
+    backdrop-filter: blur(0.5vw) !important;
+    background-color: rgba(0, 0, 0, 0.25);
+    opacity: 1;
+}
+
+[inert] {
+    opacity: 0.5;
+}

@@ -1,0 +1,19 @@
+<div id="rightClickMenu" style="position:absolute; opacity: 0; pointer-events: none; background:white; border:1px solid; display: flex; flex-direction: column;    ">
+  <button onclick="alert(1)">Action</button>
+  <button onclick="alert(2)">Action2</button>
+  <button onclick="alert(3)">Action3</button>
+</div>
+
+<script>
+  window.oncontextmenu = (e) => {
+    e.preventDefault();
+    rightClickMenu.style.left = e.pageX + 'px';
+    rightClickMenu.style.top = e.pageY + 'px';
+    rightClickMenu.style.opacity = 1;
+    rightClickMenu.style.pointerEvents = 'auto';
+  };
+  window.onclick = () => {
+    rightClickMenu.style.opacity = 0;
+    rightClickMenu.style.pointerEvents = 'none';
+  }
+</script>
